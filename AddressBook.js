@@ -115,7 +115,21 @@ class Contact{
         }
         else throw "Incorrect Email"
     }
+    toString(){
+        return "\n\nFirstName: " + this.firstName + "\nLastName: " + this.lastName + "\nAddress: " + this.address + "\nCity: " + this.city +
+                "\nState: " + this.state + "\nZip: " + this.zip + "\nPhoneNO: " + this.phoneNo + "\nEmail: " + this.email;
+    }
 }
 
+/* @Description - to create a new address book array and add new contacts  */
+
 let contact1 = new Contact("Devendra", "Kumar", "Garkha", "Saran", "Bihar", 841311, "91 8123273639",  "deva@gmail.com")
-console.log(contact1);
+let contact2 = new Contact("Abhi", "Kumar", "BTM", "Bangalore", "KA", 560076, "91 9739251118",  "abhi@gmail.com")
+let contact3 = new Contact("Vikash", "Kumar", "Garkha", "Chapra", "Bihar", 123456, "91 1234567891",  "viksah@gmail.com")
+
+let addressBookArray = new Array();
+addressBookArray.push(contact1)
+addressBookArray.push(contact2)
+addressBookArray.push(contact3)
+
+console.log(addressBookArray);
