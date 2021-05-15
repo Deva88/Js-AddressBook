@@ -3,7 +3,7 @@
  *for the initializing the instances set value with the possition */
 
 class Contact{
-     // Constructor
+    // Constructor
     constructor(...params){
         this.firstName = params[0];
         this.lastName = params[1];
@@ -55,7 +55,7 @@ class Contact{
         else throw "Incorrect Address"
     }
 
-     /* @Description - to validate city should start with captital letters or small letters
+    /* @Description - to validate city should start with captital letters or small letters
      * to used throw keyword for the invalid city  */
 
     get city(){ return this._city}
@@ -78,7 +78,7 @@ class Contact{
         else throw "Incorrect State"
     }
 
-    /* @Description - to validate zip  should start with numbers 
+     /* @Description - to validate zip  should start with numbers 
      * to used throw keyword for the invalid state  */
 
     get zip(){ return this._zip}
@@ -104,7 +104,7 @@ class Contact{
 
     /* @Description - to validate email id  should start with small letter and have one numeric 
     * its should must have atleast one special character
-     * to used throw keyword for the invalid emailId  */
+    * to used throw keyword for the invalid emailId  */
 
     get email(){ return this._email}
     set email(email){
@@ -194,7 +194,9 @@ function findContact(fname, lname){
     }
 }
 
-/* slice method are used to delete contact by using person name  */
+/* slice method are used to delete contact by using person name  
+* Find Number of Cotacts in Address Book
+*/
 
 function deleteContact(fname, lname){
     let contactToDelete;
@@ -211,7 +213,7 @@ function deleteContact(fname, lname){
     }
 }
 
-console.log("---Type---\n1 to view the contact.\n2 to edit a contact\n3 to delete a contact")
+console.log("---Type---\n1 to view the contact.\n2 to edit a contact\n3 to delete a contact\n4 to count the number of contacts")
 
 let type = prompt("Enter your choice: ")
 if (type == 1) {
@@ -225,4 +227,11 @@ else if (type == 3) {
     let f_Name = prompt("Enter the First Name:  ")
     let l_Name = prompt("Enter the Last Name:  ")
     deleteContact(f_Name, l_Name)
+}
+else if ( type == 4) {
+    function count(counter){
+        return counter + 1;
+    }
+    console.log("Total Number of Contacts: " + addressBookArray.reduce(count, 0))
+    
 }
