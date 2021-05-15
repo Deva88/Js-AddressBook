@@ -3,7 +3,7 @@
  *for the initializing the instances set value with the possition */
 
 class Contact{
-    // Constructor
+     // Constructor
     constructor(...params){
         this.firstName = params[0];
         this.lastName = params[1];
@@ -20,7 +20,7 @@ class Contact{
      * if name is not start with capital letter and if its not atleast 3 character its throw error
      * To used throw keyword for the invalid firstName */
 
-    get getfirstName(){ return this._firstName}
+    get firstName(){ return this._firstName}
     set firstName(firstName){
         let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z]{2,}$')
         if(nameRegex.test(firstName)) {
@@ -55,7 +55,7 @@ class Contact{
         else throw "Incorrect Address"
     }
 
-    /* @Description - to validate city should start with captital letters or small letters
+     /* @Description - to validate city should start with captital letters or small letters
      * to used throw keyword for the invalid city  */
 
     get city(){ return this._city}
@@ -104,8 +104,7 @@ class Contact{
 
     /* @Description - to validate email id  should start with small letter and have one numeric 
     * its should must have atleast one special character
-    * to used throw keyword for the invalid emailId  
-    */
+     * to used throw keyword for the invalid emailId  */
 
     get email(){ return this._email}
     set email(email){
@@ -122,7 +121,7 @@ class Contact{
 }
 
 /* @Description - to create a new address book array and add new contacts  */
-/* To added new details for contact person using their name and edit it */
+
 let contact1 = new Contact("Devendra", "Kumar", "Garkha", "Saran", "Bihar", 841311, "91 8123273639",  "deva@gmail.com")
 let contact2 = new Contact("Abhi", "Kumar", "BTM", "Bangalore", "KA", 560076, "91 9739251118",  "abhi@gmail.com")
 let contact3 = new Contact("Vikash", "Kumar", "Garkha", "Chapra", "Bihar", 123456, "91 1234567891",  "viksah@gmail.com")
@@ -132,7 +131,7 @@ addressBookArray.push(contact1)
 addressBookArray.push(contact2)
 addressBookArray.push(contact3)
 
-console.log(addressBookArray.toString());
+/* To added new details for contact person using their name and edit it */
 
 const prompt = require('prompt-sync')();
 function findContact(fname, lname){
@@ -194,8 +193,36 @@ function findContact(fname, lname){
         }
     }
 }
-console.log("\nTo Edit the Contacts")
-let f_Name = prompt("Enter the First Name:  ")
-let l_Name = prompt("Enter the Last Name:  ")
-findContact(f_Name, l_Name);
-console.log(addressBookArray.toString())
+
+/* slice method are used to delete contact by using person name  */
+
+function deleteContact(fname, lname){
+    let contactToDelete;
+    for(let i = 0; i < addressBookArray.length; i++){
+        if(addressBookArray[i].firstName === fname && addressBookArray[i].lastName === lname)
+            contactToDelete = addressBookArray[i]
+    }
+    if(contactToDelete == null) {
+        console.log("No Such Contact Exist in Address Book")
+    }
+    else {
+        addressBookArray.pop(contactToDelete)
+        console.log(addressBookArray.toString())
+    }
+}
+
+console.log("---Type---\n1 to view the contact.\n2 to edit a contact\n3 to delete a contact")
+
+let type = prompt("Enter your choice: ")
+if (type == 1) {
+    console.log(addressBookArray.toString())
+}
+else if (type == 2) {
+
+    findContact(f_Name, l_Name);
+}
+else if (type == 3) {
+    let f_Name = prompt("Enter the First Name:  ")
+    let l_Name = prompt("Enter the Last Name:  ")
+    deleteContact(f_Name, l_Name)
+}
