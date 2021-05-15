@@ -2,6 +2,7 @@
  * Inside the constructor as a parameter passing the instance variable
  *for the initializing the instances set value with the possition */
 
+const prompt = require('prompt-sync')();
 class Contact{
     // Constructor
     constructor(...params){
@@ -127,13 +128,28 @@ let contact2 = new Contact("Abhi", "Kumar", "BTM", "Bangalore", "KA", 560076, "9
 let contact3 = new Contact("Vikash", "Kumar", "Garkha", "Chapra", "Bihar", 123456, "91 1234567891",  "viksah@gmail.com")
 
 let addressBookArray = new Array();
-addressBookArray.push(contact1)
-addressBookArray.push(contact2)
-addressBookArray.push(contact3)
 
-/* To added new details for contact person using their name and edit it */
+/* @Description- Check the Duplicate Entry of the same Person in Address Book */
 
-const prompt = require('prompt-sync')();
+function addContact(contact){
+    let duplicateContact;
+    for(let i = 0; i < addressBookArray.length; i++){
+        if(addressBookArray[i].firstName === contact.firstName && addressBookArray[i].lastName === contact.lastName){
+            duplicateContact = addressBookArray[i]
+        }
+    }
+    if(duplicateContact != null)
+        console.log("Can't Add Contact. Dupicate Contact Found.")
+    else
+        addressBookArray.push(contact)
+}
+addContact(contact1)
+addContact(contact2)
+addContact(contact3)
+addContact(contact4)
+
+/* added new details for contact person using their name and edit */
+
 function findContact(fname, lname){
     let contactToEdit;
     for(let i = 0; i < addressBookArray.length; i++){
